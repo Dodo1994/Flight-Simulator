@@ -1,0 +1,55 @@
+﻿<Window x:Class="FlightSimulator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightSimulator"
+        xmlns:controls="clr-namespace:FlightSimulator.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <TextBlock Text="Flight Simulator" FontSize="25" FontWeight="Bold" Foreground="Purple" HorizontalAlignment="Center" Margin="10 0 0 10"/>
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+            <TabControl Grid.Column="1">
+                <TabItem Header="Manual" FontWeight="Bold">
+                    <controls:Joystick x:Name="joyStick" />
+                </TabItem>
+                <TabItem Header="Auto Pilot" FontWeight="Bold">
+                    <controls:AutoPilot x:Name="autoPilot" />
+                </TabItem>
+            </TabControl>
+            <StackPanel Grid.Column="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Connect" Grid.Column="0" Margin="100 0 20 10" FontSize="13">
+                        <Button.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="LightSteelBlue" />
+                                <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                                <GradientStop Offset="1" Color="LightSteelBlue" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Settings" Grid.Column="1" Margin="20 0 100 10" FontSize="13">
+                        <Button.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="LightSteelBlue" />
+                                <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                                <GradientStop Offset="1" Color="LightSteelBlue" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+                
+                <controls:FlightBoard x:Name="flightBoard" />
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Window>
