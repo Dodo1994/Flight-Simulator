@@ -6,29 +6,24 @@
         xmlns:local="clr-namespace:FlightSimulator"
         xmlns:controls="clr-namespace:FlightSimulator.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <TextBlock Text="Flight Simulator" FontSize="25" FontWeight="Bold" Foreground="Purple" HorizontalAlignment="Center" Margin="10 0 0 10"/>
+        Title="Flight Simulator" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <StackPanel Height="600">
+        <TextBlock Text="Flight Simulator" FontSize="30" FontWeight="Bold" Foreground="Purple" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+        <TextBlock Text="by Dovi and Ori" FontSize="20" FontStyle="Italic" Foreground="Purple" HorizontalAlignment="Center" Margin="0,0,0,20"/>
         <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-            <TabControl Grid.Column="1">
-                <TabItem Header="Manual" FontWeight="Bold">
-                    <controls:Joystick x:Name="joyStick" />
-                </TabItem>
-                <TabItem Header="Auto Pilot" FontWeight="Bold">
-                    <controls:AutoPilot x:Name="autoPilot" />
-                </TabItem>
-            </TabControl>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button Content="Connect" Grid.Column="0" Margin="100 0 20 10" FontSize="13">
+                    <Button Content="Connect" Command="{Binding ConnectCommand}" FontWeight="Bold" Grid.Column="0" Margin="90,10,20,10" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100">
                         <Button.Background>
                             <LinearGradientBrush>
                                 <GradientStop Offset="0" Color="LightSteelBlue" />
@@ -37,7 +32,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Button Content="Settings" Grid.Column="1" Margin="20 0 100 10" FontSize="13">
+                    <Button Content="Settings" Command="{Binding ShowSettingsCommand}" FontWeight="Bold" Grid.Column="1" Margin="20,10,90,10" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100">
                         <Button.Background>
                             <LinearGradientBrush>
                                 <GradientStop Offset="0" Color="LightSteelBlue" />
@@ -47,9 +42,57 @@
                         </Button.Background>
                     </Button>
                 </Grid>
-                
-                <controls:FlightBoard x:Name="flightBoard" />
+                <controls:FlightBoard x:Name="flightBoard" Height="400" Width="400" Margin="10,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </StackPanel>
+            <TabControl Grid.Column="2" RenderTransformOrigin="0.774,0.221" Margin="0,0,30,20">
+                <TabItem Header="Manual" FontWeight="Bold">
+                    <Canvas Margin="0,1,1,1">
+                        <controls:Joystick x:Name="joystick" Height="356" Width="404" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="24" Canvas.Top="18" />
+                        <TextBlock  Canvas.Left="194" Text="aileron" Canvas.Top="2"/>
+                        <TextBlock  Canvas.Left="354" Text="0.0" RenderTransformOrigin="1.412,0.438" Canvas.Top="2"/>
+                        <Slider Canvas.Left="24" Canvas.Top="380" Width="396"/>
+                        <Slider Height="356" Width="24" Orientation="Vertical" Canvas.Top="18"/>
+                        <TextBlock Canvas.Left="206" Canvas.Top="380" RenderTransformOrigin="-0.085,0.673"/>
+                        <TextBlock  Canvas.Left="368" Canvas.Top="21" Height="22" Padding="3" Text="0.0"/>
+                        <TextBlock  Canvas.Left="60" Canvas.Top="18"/>
+                        <TextBlock Height="22" Padding="3" Canvas.Left="354" Canvas.Top="179" Text="elevator" />
+                        <TextBlock  Canvas.Left="11" Canvas.Top="5" Text="0"/>
+                        <TextBlock Height="22" Padding="3" Canvas.Top="179" Text="throttle" />
+                        <TextBlock Height="22" Padding="3" Canvas.Left="407" Canvas.Top="353" Text="0" RenderTransformOrigin="-1.154,-0.545" />
+                        <TextBlock Height="22" Padding="3" Canvas.Left="194" Canvas.Top="376" Text="rudder" RenderTransformOrigin="-2.489,-0.795" />
+                    </Canvas>
+                </TabItem>
+                <TabItem Header="Auto Pilot" FontWeight="Bold">
+                    <StackPanel>
+                        <TextBox Name="commandsBox" Width="431" Height="360" Margin="10" VerticalAlignment="Top" Background="White" HorizontalAlignment="Left" UseLayoutRounding="True" VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" FontSize="16"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Content="OK" Grid.Column="0" Margin="80,10,20,10" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100">
+                                <Button.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Offset="0" Color="LightSteelBlue" />
+                                        <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                                        <GradientStop Offset="1" Color="LightSteelBlue" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Button Content="Clear" Grid.Column="1" Margin="20,10,80,10" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100">
+                                <Button.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Offset="0" Color="LightSteelBlue" />
+                                        <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                                        <GradientStop Offset="1" Color="LightSteelBlue" />
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+
         </Grid>
     </StackPanel>
 </Window>
