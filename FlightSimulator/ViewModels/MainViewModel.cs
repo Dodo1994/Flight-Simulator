@@ -9,17 +9,20 @@ using FlightSimulator.Commands;
 using FlightSimulator.Model;
 using System.Windows;
 using FlightSimulator.Views.Windows;
+using System.ComponentModel;
 
 namespace FlightSimulator.ViewModels
 {
  
-    public class MainViewModel
+    public class MainViewModel : ViewModel
     {
         private SettingsViewModel settingsViewModel;
         private Settings settings;
+        private MainWindowModel model;
 
         public MainViewModel()
         {
+            this.model = new MainWindowModel();
         }
 
         private ICommand showSettingsCommand;
@@ -40,6 +43,10 @@ namespace FlightSimulator.ViewModels
             this.settingsViewModel.ReloadSettings();
 
             settings.ShowDialog();
+
+            this.model.IP = this.settingsViewModel.FlightServerIP;
+            this.model.CommandPort = this.settingsViewModel.FlightCommandPort;
+            this.model.InfoPort = this.settingsViewModel.FlightInfoPort;
         }
 
 
@@ -59,6 +66,50 @@ namespace FlightSimulator.ViewModels
             this.settingsViewModel.ReloadSettings();
             // here shows path on graph
         }
-       
+
+        private ICommand clearCommand;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICommand ClearCommand
+        {
+            get
+            {
+                return clearCommand ??
+                    (clearCommand = new CommandHandler(() => ClearOnClick()));
+            }
+        }
+
+        private void ClearOnClick()
+        {
+            this.Script = "";
+        }
+
+        public string Script
+        {
+            get { return this.model.Script; }
+            set
+            {
+                model.Script = value;
+                NotifyPropertyChanged("Script");
+            }
+        }
+
+        private ICommand okScriptCommand;
+ 
+        public ICommand OkScriptCommand
+        {
+            get
+            {
+                return okScriptCommand ??
+                    (okScriptCommand = new CommandHandler(() => ScriptOnClick()));
+            }
+        }
+
+        private void ScriptOnClick()
+        {
+            model.sendAutoPilotCommands();
+        }
+
     }
 }

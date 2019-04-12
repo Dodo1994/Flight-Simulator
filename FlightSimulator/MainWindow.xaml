@@ -64,13 +64,13 @@
                 </TabItem>
                 <TabItem Header="Auto Pilot" FontWeight="Bold">
                     <StackPanel>
-                        <TextBox Name="commandsBox" Width="431" Height="360" Margin="10" VerticalAlignment="Top" Background="White" HorizontalAlignment="Left" UseLayoutRounding="True" VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" FontSize="16"/>
+                        <TextBox Name="commandsBox" Text="{Binding Script}" Width="431" Height="360" Margin="10" VerticalAlignment="Top" Background="White" HorizontalAlignment="Left" UseLayoutRounding="True" VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" FontSize="16"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Button Content="OK" Grid.Column="0" Margin="80,10,20,10" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100">
+                            <Button Content="OK" Grid.Column="0" Command="{Binding OkScriptCommand}" Margin="80,10,20,10" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100">
                                 <Button.Background>
                                     <LinearGradientBrush>
                                         <GradientStop Offset="0" Color="LightSteelBlue" />
@@ -79,7 +79,7 @@
                                     </LinearGradientBrush>
                                 </Button.Background>
                             </Button>
-                            <Button Content="Clear" Grid.Column="1" Margin="20,10,80,10" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100">
+                            <Button Content="Clear" Command="{Binding ClearCommand}" Grid.Column="1" Margin="20,10,80,10" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100">
                                 <Button.Background>
                                     <LinearGradientBrush>
                                         <GradientStop Offset="0" Color="LightSteelBlue" />
