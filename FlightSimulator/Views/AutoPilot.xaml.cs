@@ -24,5 +24,10 @@ namespace FlightSimulator.Views
         {
             InitializeComponent();
         }
+
+        private void ScriptBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

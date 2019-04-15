@@ -6,14 +6,15 @@
              xmlns:local="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBox x:Name="scriptBox" Margin="50 10" Height="250" />
+    <Canvas x:Name="Base" Margin="0" Width="340" Height="340">
+    <StackPanel Width="340" Height="330">
+        <TextBox x:Name="scriptBox" Margin="30 5" Height="290"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Content="OK" Grid.Column="0"  FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,0,10,0">
+            <Button Content="OK" Grid.Column="0"  FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                 <Button.Background>
                     <LinearGradientBrush>
                         <GradientStop Offset="0" Color="LightSteelBlue" />
@@ -22,7 +23,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button Content="Clear" Grid.Column="1" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,0,184,0" >
+            <Button Content="Clear" Grid.Column="1" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" >
                 <Button.Background>
                     <LinearGradientBrush>
                         <GradientStop Offset="0" Color="LightSteelBlue" />
@@ -33,4 +34,5 @@
             </Button>
         </Grid>
     </StackPanel>
+    </Canvas>
 </UserControl>

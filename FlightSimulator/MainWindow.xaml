@@ -19,7 +19,7 @@
                     <controls:Joystick x:Name="joyStick" />
                 </TabItem>
                 <TabItem Header="Auto Pilot" FontWeight="Bold">
-                    <controls:AutoPilot x:Name="autoPilot" />
+                    <controls:AutoPilot x:Name="autoPilot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </TabItem>
             </TabControl>
             <StackPanel Grid.Column="0">
@@ -47,8 +47,7 @@
                         </Button.Background>
                     </Button>
                 </Grid>
-                
-                <controls:FlightBoard x:Name="flightBoard" />
+                <controls:FlightBoard x:Name="flightBoard" HorizontalAlignment="Stretch" Loaded="FlightBoard_Loaded" VerticalAlignment="Stretch" />
             </StackPanel>
         </Grid>
     </StackPanel>
