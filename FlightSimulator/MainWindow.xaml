@@ -42,7 +42,7 @@
                         </Button.Background>
                     </Button>
                 </Grid>
-                <controls:FlightBoard x:Name="flightBoard" Height="400" Width="400" Margin="10,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <controls:FlightBoard Height="400" Width="400" Margin="10,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </StackPanel>
             <TabControl Grid.Column="2" RenderTransformOrigin="0.774,0.221" Margin="0,0,30,20">
                 <TabItem Header="Manual" FontWeight="Bold">

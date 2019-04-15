@@ -28,12 +28,19 @@ namespace FlightSimulator.Views
         MainViewModel vm;
 
         ObservableDataSource<Point> planeLocations = null;
-        public FlightBoard()
+        public FlightBoard(MainViewModel vm)
         {
+            InitializeComponent(); 
+            this.vm = vm;
+            DataContext = this.vm;
+        }
+
+        public FlightBoard(){
             InitializeComponent(); 
         }
 
-        public void setDataContext(MainViewModel vm){
+        public void setVM(MainViewModel vm)
+        {
             this.vm = vm;
             DataContext = this.vm;
         }

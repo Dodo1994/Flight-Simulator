@@ -7,6 +7,7 @@ using System.Windows.Input;
 using FlightSimulator.ViewModels.Windows;
 using FlightSimulator.Model;
 using System.Windows;
+using FlightSimulator.Views;
 using FlightSimulator.Views.Windows;
 using System.ComponentModel;
 using System.Threading;
@@ -20,11 +21,17 @@ namespace FlightSimulator.ViewModels
         private Settings settings;
         private MainWindowModel model;
         private bool isConnect;
+        private FlightBoard flightBoard;
+        //private Joystick joystick;
+
 
         public MainViewModel()
         {
             this.model = new MainWindowModel();
             this.isConnect = false;
+
+            this.flightBoard = new FlightBoard();
+            this.flightBoard.setVM(this);
         }
 
 

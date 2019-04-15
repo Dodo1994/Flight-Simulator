@@ -28,10 +28,7 @@ namespace FlightSimulator.Model
         private float elevator;
         private float lon;
         private float lat;
-
-
-
-
+        
 
         public MainWindowModel()
         {
