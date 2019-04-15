@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using FlightSimulator.ViewModels.Windows;
-using FlightSimulator.Commands;
 using FlightSimulator.Model;
 using System.Windows;
 using FlightSimulator.Views.Windows;
 using System.ComponentModel;
+using System.Threading;
 
 namespace FlightSimulator.ViewModels
 {
@@ -19,10 +19,12 @@ namespace FlightSimulator.ViewModels
         private SettingsViewModel settingsViewModel;
         private Settings settings;
         private MainWindowModel model;
+        private bool isConnect;
 
         public MainViewModel()
         {
             this.model = new MainWindowModel();
+            this.isConnect = false;
         }
 
         private ICommand showSettingsCommand;
@@ -60,10 +62,16 @@ namespace FlightSimulator.ViewModels
             }
         }
 
+
+        // here need to connect as client and as server
         private void ConnectOnClick()
         {
-            
-            this.settingsViewModel.ReloadSettings();
+            if(!this.isConnect)
+            {
+                this.model.openClientThread();
+                this.model.openServerThread();
+                this.isConnect = true;
+            }
             // here shows path on graph
         }
 
