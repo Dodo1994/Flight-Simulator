@@ -27,6 +27,59 @@ namespace FlightSimulator.ViewModels
             this.isConnect = false;
         }
 
+
+        public float Lon
+        {
+            get
+            {
+                return this.model.Lon;
+            }
+            set
+            {
+                this.model.Lon = value;
+                NotifyPropertyChanged("Lon");
+            }
+        }
+
+        public float Lat
+        {
+            get { return this.model.Lat; }
+            set
+            {
+                this.model.Lat = value;
+                NotifyPropertyChanged("Lat");
+            }
+        }
+        
+
+        public string Script
+        {
+            get { return this.model.Script; }
+            set { 
+                    this.model.Script = value;
+                    NotifyPropertyChanged("Script");
+                }
+        }
+
+        public string IP
+        {
+            get { return this.model.IP; }
+            set { this.model.IP = value; NotifyPropertyChanged("IP");}
+        }
+
+        public int CommandPort
+        {
+            get { return this.model.CommandPort; }
+            set { this.model.CommandPort = value; NotifyPropertyChanged("CommandPort");}
+        }
+
+        public int InfoPort
+        {
+            get { return this.model.InfoPort; }
+            set { this.model.InfoPort = value; NotifyPropertyChanged("InfoPort");}
+        }
+
+
         private ICommand showSettingsCommand;
         public ICommand ShowSettingsCommand
         {
@@ -46,9 +99,9 @@ namespace FlightSimulator.ViewModels
 
             settings.ShowDialog();
 
-            this.model.IP = this.settingsViewModel.FlightServerIP;
-            this.model.CommandPort = this.settingsViewModel.FlightCommandPort;
-            this.model.InfoPort = this.settingsViewModel.FlightInfoPort;
+            this.IP = this.settingsViewModel.FlightServerIP;
+            this.CommandPort = this.settingsViewModel.FlightCommandPort;
+            this.InfoPort = this.settingsViewModel.FlightInfoPort;
         }
 
 
@@ -92,16 +145,7 @@ namespace FlightSimulator.ViewModels
         {
             this.Script = "";
         }
-
-        public string Script
-        {
-            get { return this.model.Script; }
-            set
-            {
-                model.Script = value;
-                NotifyPropertyChanged("Script");
-            }
-        }
+        
 
         private ICommand okScriptCommand;
  

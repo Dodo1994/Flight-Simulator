@@ -47,89 +47,59 @@ namespace FlightSimulator.Model
             this.isJoystick = false;
         }
 
-
-        public string FlightServerIP
+        
+        public float Lon
         {
-            get { return model.FlightServerIP; }
+            get
+            {
+                return this.lon;
+            }
             set
             {
-                model.FlightServerIP = value;
-                NotifyPropertyChanged("FlightServerIP");
+                this.lon = value;
             }
         }
+
+        public float Lat
+        {
+            get { return this.lat; }
+            set
+            {
+                this.lat = value;
+            }
+        }
+        
 
         public string Script
         {
             get { return this.script; }
             set { 
-                    this.script = value;
-                    NotifyPropertyChanged("Script");
+                    this.script = value;;
                 }
         }
 
         public string IP
         {
             get { return this.ip; }
-            set { this.ip = value; NotifyPropertyChanged("IP");}
+            set { this.ip = value; }
         }
 
         public int CommandPort
         {
             get { return this.cmdPort; }
-            set { this.cmdPort = value; NotifyPropertyChanged("CommandPort");}
+            set { this.cmdPort = value;}
         }
 
         public int InfoPort
         {
             get { return this.infoPort; }
-            set { this.infoPort = value; NotifyPropertyChanged("InfoPort");}
+            set { this.infoPort = value;}
         }
+
+
 
         public void sendAutoPilotCommands()
         {
-            /*try
-            {
-                TcpClient tcpclnt = new TcpClient();
-                Console.WriteLine("Connecting.....");
-
-                tcpclnt.Connect(this.ip, this.cmdPort);
-                // use the ipaddress as in the server program
-
-                Console.WriteLine("Connected");
-
-
-                // Console.Write("Enter the string to be transmitted : ");
-                // String str = Console.ReadLine();
-
-                string[] stringSeparators = new string[] { "\r\n" };
-                string[] cmds = script.Split(stringSeparators, StringSplitOptions.None);
-
-                for(int j=0; j < cmds.Length; ++j)
-                {
-                    String str = cmds[j] + "\r\n";
-
-                    Stream stm = tcpclnt.GetStream();
-
-                    ASCIIEncoding asen = new ASCIIEncoding();
-                    byte[] ba = asen.GetBytes(str);
-                    Console.WriteLine("Transmitting.....");
-
-                    stm.Write(ba, 0, ba.Length);
-
-                    byte[] bb = new byte[100];
-                    int k = stm.Read(bb, 0, 100);
-
-                    for (int i = 0; i < k; i++)
-                        Console.Write(Convert.ToChar(bb[i]));
-                }
-
-                tcpclnt.Close();
-            }
-
-            catch (Exception e)
-            {
-                Console.WriteLine("Error..... " + e.StackTrace);
-            }*/
             this.isAutoPilot = true;
         }
 
@@ -141,7 +111,7 @@ namespace FlightSimulator.Model
 
         public void connectAsClient()
         {
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(this.ip), this.CommandPort);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(this.ip), this.cmdPort);
             TcpClient client = new TcpClient();
             client.Connect(ep);
             Console.WriteLine("You are connected");
@@ -200,11 +170,10 @@ namespace FlightSimulator.Model
                 {
 
                     Console.WriteLine("Waiting for a number");
-                    int num = reader.ReadInt32();
-                    Console.WriteLine("Number accepted");
-                    num *= 2;
-                    writer.Write(num);
-                    writer.Flush();
+                    string[] stringSeparators = new string[] { "," };
+                    string[] info = reader.ReadString().Split(stringSeparators, StringSplitOptions.None);
+                    this.lat = float.Parse(info[0]);
+                    this.lon = float.Parse(info[1]);
                 }
             }
             client.Close();

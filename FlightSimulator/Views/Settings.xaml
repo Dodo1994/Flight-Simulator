@@ -24,10 +24,10 @@
                 <TextBox x:Name="txtIP" Grid.Column="1" Grid.Row="0" Margin="0 15" Text="{Binding FlightServerIP}" TextAlignment="Center" />
                 <!-- Info -->
                 <TextBlock Text="Flight Info Port:" Grid.Column="0" Grid.Row="1" Margin="0 15"/>
-                <TextBox x:Name="txtInfoPort" Grid.Column="1" Grid.Row="1" Margin="0 15" Text="{Binding FlightInfoPort}" TextAlignment="Center" />
+                <TextBox x:Name="txtInfoPort" Grid.Column="1" Grid.Row="1" Margin="0 15" TextAlignment="Center" />
                 <!-- Info -->
                 <TextBlock Text="Flight Command Port:" Grid.Column="0" Grid.Row="2" Margin="0 15"/>
-                <TextBox x:Name="txtCommandPort" Grid.Column="1" Grid.Row="2" Margin="0 15" Text="{Binding FlightCommandPort}" TextAlignment="Center"/>
+                <TextBox x:Name="txtCommandPort" Grid.Column="1" Grid.Row="2" Margin="0 15" TextAlignment="Center"/>
 
             </Grid>
 
