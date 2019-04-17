@@ -1,5 +1,6 @@
 ﻿using FlightSimulator.Model;
 using FlightSimulator.Model.Interface;
+using FlightSimulator.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,16 @@ using System.Windows.Input;
 
 namespace FlightSimulator.ViewModels.Windows
 {
-    public class SettingsWindowViewModel : BaseNotify
+    public class SettingsViewModel : BaseNotify
     {
         private ISettingsModel model;
+        private Settings settings;
 
-        public SettingsWindowViewModel(ISettingsModel model)
+        public SettingsViewModel(Settings settings)
         {
-            this.model = model;
+            this.model = new ApplicationSettingsModel();
+            this.settings = settings;
+            this.settings.setDataContext(this);
         }
 
         public string FlightServerIP
@@ -49,8 +53,6 @@ namespace FlightSimulator.ViewModels.Windows
             }
         }
 
-     
-
         public void SaveSettings()
         {
             model.SaveSettings();
@@ -61,37 +63,38 @@ namespace FlightSimulator.ViewModels.Windows
             model.ReloadSettings();
         }
 
-        #region Commands
-        #region ClickCommand
-        private ICommand _clickCommand;
-        public ICommand ClickCommand
+        private ICommand okCommand;
+        public ICommand OkCommand
         {
             get
             {
-                return _clickCommand ?? (_clickCommand = new CommandHandler(() => OnClick()));
+                return okCommand ??
+                    (okCommand = new CommandHandler(() => OkOnClick()));
             }
         }
-        private void OnClick()
-        {
-            model.SaveSettings();
-        }
-        #endregion
 
-        #region CancelCommand
-        private ICommand _cancelCommand;
+        private void OkOnClick()
+        {
+            this.SaveSettings();
+            this.settings.Close();
+        }
+
+
+        private ICommand cancelCommand;
         public ICommand CancelCommand
         {
             get
             {
-                return _cancelCommand ?? (_cancelCommand = new CommandHandler(() => OnCancel()));
+                return cancelCommand ??
+                    (cancelCommand = new CommandHandler(() => CancelOnClick()));
             }
         }
-        private void OnCancel()
+
+        private void CancelOnClick()
         {
-            model.ReloadSettings();
+            this.settings.Close();
         }
-        #endregion
-        #endregion
+        
     }
 }
 

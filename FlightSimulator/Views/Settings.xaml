@@ -1,0 +1,61 @@
+﻿<Window x:Class="FlightSimulator.Views.Windows.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightSimulator.Views.Windows"
+        mc:Ignorable="d"
+         Title="Settings" Height="250" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <Border Padding="15">
+        <StackPanel TextBlock.FontSize="14" Width="301" Height="200" VerticalAlignment="Top">
+            <!-- Server -->
+            <Grid Width="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+              <!-- Server -->
+              <TextBlock Text="Flight Server IP:" Grid.Column="0" Grid.Row="0" Margin="0 15"/>
+              <TextBox x:Name="txtIP" Grid.Column="1" Grid.Row="0" Margin="0 15" Text="{Binding FlightServerIP}" TextAlignment="Center" />
+              <!-- Info -->
+              <TextBlock Text="Flight Info Port:" Grid.Column="0" Grid.Row="1" Margin="0 15"/>
+              <TextBox x:Name="txtInfoPort" Grid.Column="1" Grid.Row="1" Margin="0 15" Text="{Binding FlightInfoPort}" TextAlignment="Center" />
+              <!-- Info -->
+              <TextBlock Text="Flight Command Port:" Grid.Column="0" Grid.Row="2" Margin="0 15"/>
+              <TextBox x:Name="txtCommandPort" Grid.Column="1" Grid.Row="2" Margin="0 15" Text="{Binding FlightCommandPort}" TextAlignment="Center"/>
+            </Grid>
+
+            <!-- Buttons -->
+            <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="OK" Command="{Binding OkCommand}" Grid.Column="0" Margin="90,5,10,5" Padding="5" FontSize="13" VerticalContentAlignment="Center" Height="30">
+                    <Button.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Offset="0" Color="LightSteelBlue" />
+                            <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                            <GradientStop Offset="1" Color="LightSteelBlue" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button Content="Cancel" Command="{Binding CancelCommand}" Grid.Column="1" Margin="10,5,90,5" Padding="5" FontSize="13" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="30">
+                    <Button.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Offset="0" Color="LightSteelBlue" />
+                            <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                            <GradientStop Offset="1" Color="LightSteelBlue" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
