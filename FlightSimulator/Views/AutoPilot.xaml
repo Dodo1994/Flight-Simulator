@@ -7,32 +7,33 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Canvas x:Name="Base" Margin="0" Width="340" Height="340">
-    <StackPanel Width="340" Height="330">
-        <TextBox x:Name="scriptBox" Margin="30 5" Height="290"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Button Content="OK" Grid.Column="0"  FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Offset="0" Color="LightSteelBlue" />
-                        <GradientStop Offset="0.5" Color="WhiteSmoke" />
-                        <GradientStop Offset="1" Color="LightSteelBlue" />
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-            <Button Content="Clear" Grid.Column="1" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" >
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Offset="0" Color="LightSteelBlue" />
-                        <GradientStop Offset="0.5" Color="WhiteSmoke" />
-                        <GradientStop Offset="1" Color="LightSteelBlue" />
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-        </Grid>
-    </StackPanel>
+        <StackPanel Width="340" Height="330">
+            <TextBox x:Name="scriptBox" Margin="30 5" Height="290"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="OK" Grid.Column="0"  FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                    <Button.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Offset="0" Color="LightSteelBlue" />
+                            <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                            <GradientStop Offset="1" Color="LightSteelBlue" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button Content="Clear" Grid.Column="1" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" >
+                    <Button.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Offset="0" Color="LightSteelBlue" />
+                            <GradientStop Offset="0.5" Color="WhiteSmoke" />
+                            <GradientStop Offset="1" Color="LightSteelBlue" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </StackPanel>
     </Canvas>
 </UserControl>
